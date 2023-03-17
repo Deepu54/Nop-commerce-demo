@@ -13,6 +13,7 @@ const _dateDropDown = '//select[@name="DateOfBirthDay"]';
 const _monthDropDown = '//select[@name="DateOfBirthMonth"]';
 const _yearDropDown = '//select[@name="DateOfBirthYear"]';
 const _registerSubmitButton = "#register-button";
+const recentEmail = date
 
 class Registerpage {
   static async maleRAdioButton() {
@@ -42,8 +43,8 @@ class Registerpage {
 
   }
 
-  static async emailID() {
-    await utils.typeText(_email,`${dataInp.firstEmail}${date}${dataInp.lastEmail}`)
+  static async emailID(recentEmail) {
+    await utils.typeText(_email,dataInp.firstEmail+recentEmail+dataInp.lastEmail)
 
   }
   static async password() {

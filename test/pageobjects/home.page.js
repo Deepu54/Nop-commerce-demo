@@ -4,8 +4,10 @@ const _loginButton='.ico-login'
 const _searchButton='[id="small-searchterms"]'
 const _searchIcon='//button[text()="Search"]'
 const dataInp = require('../../testConfig.json')
-
 let date = new Date().getTime()
+const recentEmail = date
+
+
 
 class Homepage {
     static async registerButton() {

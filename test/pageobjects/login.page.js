@@ -6,8 +6,8 @@ const _loginPassword ='#Password'
 const _loginOnSubmitButton ='//button[contains(text(), "Log in")]'
 
 class LoginPage {
-    static async loginEmail() {
-        await utils.typeText(_loginEmail,`${dataInp.firstEmail}${date}${dataInp.lastEmail}`)
+    static async loginEmail(recentEmail) {
+        await utils.typeText(_loginEmail,dataInp.firstEmail+recentEmail+dataInp.lastEmail)
     
     }
     static async loginPassword() {

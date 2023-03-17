@@ -7,7 +7,9 @@ const Homepage = require('../pageobjects/home.page')
 const Cart = require('../pageobjects/carts')
 const { cart } = require('../pageobjects/carts')
 const Billing= require('../pageobjects/billingaddress')
-
+const BillingAddress = require('../pageobjects/billingaddress')
+let date = new Date().getTime()
+const recentEmail = date
 
 describe('Demo Nop Commerce Registration',async function(){
     
@@ -26,7 +28,7 @@ describe('Demo Nop Commerce Registration',async function(){
         await registerPage.birthday().selectByIndex(28)
         await registerPage.birthMonth().selectByIndex(8)
         await registerPage.birthYear().selectByIndex(88)
-        await registerPage.emailID()
+        await registerPage.emailID(recentEmail)
         await registerPage.password()
         await registerPage.confirmPassword()
         await registerPage.submitButton()
@@ -40,7 +42,7 @@ describe('Nop commerce Login',async function()
      it('logging in to the account', async function() 
      {
          await homePage.loginButton()
-         await loginPage.loginEmail()
+         await loginPage.loginEmail(recentEmail)
          await loginPage.loginPassword()
          await loginPage.loginSubmit()
          
@@ -75,13 +77,16 @@ describe('Nop commerce cart', async function() {
         await utils.browserScroll(0,400)
         await Cart.TermsConditions()
         await Cart.checkOut()
+        
 
         
     })
  })
 describe('Nop commerce billing and shipping', async function() {
     it('user should be able to add the billing & shipping address', async function(){
-        
+        await BillingAddress.Bills(recentEmail)
+        //await BillingAddress.continue2()
+        await utils.pause(2000)
 
 
     }) 
