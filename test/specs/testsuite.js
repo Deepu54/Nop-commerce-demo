@@ -6,6 +6,7 @@ const dataInp = require('../../testConfig.json')
 const Homepage = require('../pageobjects/home.page')
 const Cart = require('../pageobjects/carts')
 const { cart } = require('../pageobjects/carts')
+const Billing= require('../pageobjects/billingaddress')
 
 
 describe('Demo Nop Commerce Registration',async function(){
@@ -80,6 +81,7 @@ describe('Nop commerce cart', async function() {
  })
 describe('Nop commerce billing and shipping', async function() {
     it('user should be able to add the billing & shipping address', async function(){
+        
 
 
     }) 
