@@ -1,0 +1,19 @@
+
+{
+    "baseUrl":"https://demo.nopcommerce.com/",
+    "firstName":"Deepu",
+    "lastName":"Bhat",
+    "firstEmail":"Deepbhat",
+    "lastEmail":"@gmail.com",
+    "password":"password123",
+    "confirmPassword":"password123",
+    "cameraSearch":"camera",
+    "company":"Alphabin",
+    "postalcode":"394105",
+    "Address":"Surat",
+    "phonenumber":"7780832128",
+    "city" : "surat uttran",
+
+    "securityAnswer":"none",    
+    "userName":"yoyoyo"
+}
