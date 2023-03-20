@@ -1,10 +1,8 @@
-const utils = require("..//specs/utils");
-const dataInp = require("..//..//testConfig.json");
-const { util } = require("chai");
+const utils = require("../specs/utils");
+const dataInp = require("../../testConfig.json");
 const { emailID } = require("./register.page");
-const register = require('../pageobjects/register.page')
 
-
+//Locators
 const _firstName = '[id="BillingNewAddress_FirstName"]';
 const _lastName = '[id="BillingNewAddress_LastName"]';
 const _email = '[id="BillingNewAddress_Email"]';
@@ -15,13 +13,23 @@ const _address = '[id="BillingNewAddress_Address1"]';
 const _zipCode = '[name="BillingNewAddress.ZipPostalCode"]';
 const _phoneNumber = '[id="BillingNewAddress_PhoneNumber"]';
 const _billingAddress ='(//button[@class="button-1 new-address-next-step-button"])[1]';
-const _Continue = '(//button[text()="Continue"])[1]';
-const _Continue2='(//button[text()="Continue"])[2]'
+const _Continue1 = '(//button[text()="Continue"])[1]';
+const _Continue2='[class="button-1 shipping-method-next-step-button"]'
 const _creditCard='[id="paymentmethod_1"]'
 const _Continue3='(//button[text()="Continue"])[3]'
+const _paymentMethod='[id="paymentmethod_1"]'
 const _creditCardType='[id="CreditCardType"]'
+const _Continue4='[class="button-1 payment-method-next-step-button"]'
+const _cardHolderName='[id="CardholderName"]'
+const _cardnumber='[id="CardNumber"]'
+const _ExpireMonth='[id="ExpireMonth"]'
+const _ExpireYear='[id="ExpireYear"]'
+const _cardCode='[id="CardCode"]'
+const _Continue5='[class="button-1 payment-info-next-step-button"]'
+const _confirm='[class="button-1 confirm-order-next-step-button"]'
 
-class BillingAddress {
+
+class BillingPayment {
   static async Firstname() {
     await utils.typeText(_firstName, dataInp.Firstname);
   }
@@ -50,8 +58,8 @@ class BillingAddress {
   static async phoneNum() {
     await utils.typeText(_phoneNumber, dataInp.phonenumber);
   }
-  static async Continue() {
-    await utils.clickOnElement(_Continue);
+  static async Continue1() {
+    await utils.clickOnElement(_Continue1);
   }
 
   static async Bills(recentEmail) {
@@ -63,21 +71,51 @@ class BillingAddress {
     await this.Address();
     await this.postal();
     await this.phoneNum();
-    await this.Continue();
+    await this.Continue1();
+    await utils.pause(3000)
   }
   static async continue2() {
     await utils.clickOnElement(_Continue2)
-  }
-  static async creditcard() {
-    await $(_creditCard).selectByVisibleText(Discover)
+  
   }
   static async Continue3() {
     await utils.clickOnElement(_Continue3)
   }
+  static async paymentMethod() {
+    await utils.clickOnElement(_paymentMethod)
+  }
+  static async Continue4() {
+    await utils.clickOnElement(_Continue4)
+  }
+  static async CreditCardsType() {
+    await $(_creditCardType).selectByVisibleText("Discover")
+  }
+  static async CardHolderName() {
+    await utils.typeText(_cardHolderName,dataInp.firstName,dataInp.lastEmail)
+  }
+  static async CardHolderNumber() {
+    await utils.typeText(_cardnumber,dataInp.card)
+  }
+  
+  static async ExpirationMonth() {
+    await $(_ExpireMonth).selectByIndex("10");
+  }
+  static async ExpirationYear() {
+    await $(_ExpireYear).selectByIndex("10")
+  }
+  static async CardCode() {
+    await utils.typeText(_cardCode,dataInp.cvv)
+  }
+  static async Continue5() {
+    await utils.clickOnElement(_Continue5)
+  }
+  static async Confirm(){
+    await utils.clickOnElement(_confirm)
+  }
+  
+
+
    
-//    static async Cards() {
-//     await $(_creditCardType).selectByIndex(dataInp.)
-//   }
 }
 
-module.exports = BillingAddress;
+module.exports = BillingPayment;
