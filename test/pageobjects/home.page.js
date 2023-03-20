@@ -7,8 +7,6 @@ const dataInp = require('../../testConfig.json')
 let date = new Date().getTime()
 const recentEmail = date
 
-
-
 class Homepage {
     static async registerButton() {
         await utils.clickOnElement(_registrationButton);
@@ -23,9 +21,6 @@ class Homepage {
     static async clicked() {
         await utils.clickOnElement(_searchIcon)
     }
-   
-
-
 }
 
 module.exports = Homepage

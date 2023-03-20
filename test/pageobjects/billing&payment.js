@@ -111,11 +111,6 @@ class BillingPayment {
   }
   static async Confirm(){
     await utils.clickOnElement(_confirm)
-  }
-  
-
-
-   
+  }   
 }
-
 module.exports = BillingPayment;
