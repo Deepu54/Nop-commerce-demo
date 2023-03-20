@@ -7,8 +7,6 @@ const _shoppingCart='//a[text()="shopping cart"]'
 const _termsConditions ='[id="termsofservice"]'
 const _checkOut='[id="checkout"]'
 
-
-
 class Cart {
     static async cart() {
         await utils.clickOnElement(_Cart)
@@ -25,7 +23,5 @@ class Cart {
     static async checkOut() {
         await utils.clickOnElement(_checkOut)
     }
-   
-
 }
 module.exports =Cart

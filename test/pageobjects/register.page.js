@@ -2,7 +2,6 @@ const dataInp = require('../../testConfig.json')
 let date = new Date().getTime()
 
 const utils = require('../specs/utils')
-
 const _maleRadioButton = "#gender-male";
 const _firstName = "#FirstName";
 const _lastName = "#LastName";

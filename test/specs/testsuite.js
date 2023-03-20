@@ -1,19 +1,21 @@
 const registerPage = require('../pageobjects/register.page')
 const homePage = require('../pageobjects/home.page')
 const loginPage = require('../pageobjects/login.page')
+const Logout =require('..//pageobjects/Logout')
 const utils = require('../specs/utils')
 const dataInp = require('../../testConfig.json')
 const Homepage = require('../pageobjects/home.page')
 const Cart = require('../pageobjects/carts')
 const { cart } = require('../pageobjects/carts')
-const Billing= require('../pageobjects/billingaddress')
-const BillingAddress = require('../pageobjects/billingaddress')
+const Orderdetails = require('../pageobjects/Orderdetails')
+const Billing= require('../pageobjects/billing&payment')
+const BillingPayment = require('../pageobjects/billing&payment')
+const order = require('../pageobjects/Orderdetails')
 let date = new Date().getTime()
 const recentEmail = date
 
 describe('Demo Nop Commerce Registration',async function(){
     
-
     it('should open the correct website ', async function() 
     {
         await utils.browserMaximize()
@@ -32,8 +34,6 @@ describe('Demo Nop Commerce Registration',async function(){
         await registerPage.password()
         await registerPage.confirmPassword()
         await registerPage.submitButton()
-        
-
     })   
 })
 
@@ -44,12 +44,8 @@ describe('Nop commerce Login',async function()
          await homePage.loginButton()
          await loginPage.loginEmail(recentEmail)
          await loginPage.loginPassword()
-         await loginPage.loginSubmit()
-         
-
-        
+         await loginPage.loginSubmit()  
      })
-
  })
 
 describe('Nop commeerce shopping',async function(){
@@ -65,49 +61,49 @@ describe('Nop commeerce shopping',async function(){
     })
 })
 
-
 describe('Nop commerce cart', async function() {
 
     it('user should be able to add products to cart', async function(){
-
-    
         await Cart.addToCart()
         await utils.pause(4000)
         await Cart.ShoppingCart()
         await utils.browserScroll(0,400)
         await Cart.TermsConditions()
         await Cart.checkOut()
-        
-
-        
+        await utils.pause(2000)   
     })
  })
 describe('Nop commerce billing and shipping', async function() {
-    it('user should be able to add the billing & shipping address', async function(){
-        await BillingAddress.Bills(recentEmail)
-        //await BillingAddress.continue2()
-        await utils.pause(2000)
-
-
+    it('user should be able to add the billing and shipping address & payment', async function(){
+        await BillingPayment.Bills(recentEmail)
+        await BillingPayment.Continue3()
+        await BillingPayment.paymentMethod()
+        await BillingPayment.Continue4()
+        await BillingPayment.CreditCardsType()
+        await BillingPayment.CardHolderName()
+        await BillingPayment.CardHolderNumber()
+        await BillingPayment.ExpirationMonth()
+        await BillingPayment.ExpirationYear()
+        await BillingPayment.CardCode()
+        await BillingPayment.Continue5()
+        await utils.pause(4000)
+        await utils.browserScroll(0,2000)
+        await BillingPayment.Confirm()
+        await utils.pause(3000)    
     }) 
 })
+describe('Nop commerce Order details',async function() {
+    it('user should be able get his order details & download Invoice ',async function() {
+        await order.OrderInfo()
+        await utils.pause(2000)
+        await order.Invoice()
+})
 
+    })
 
+describe('Nop commerce Logout',async function(){
+    it('user should be able to Logout of the application',async function() {
+        await Logout.Logout()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
+    })
+})
